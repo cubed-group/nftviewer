@@ -1,0 +1,8 @@
+.nft-viewer-container {
+  display: flex;
+}
+
+.nft-viewer-container:not(.image) {
+  align-items: center;
+  justify-content: center;
+}
