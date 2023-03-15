@@ -5,10 +5,12 @@ export default function ThreeD({
   url = "",
   onError,
   className,
+  containerClassname,
   ...others
 }: any) {
   return (
-    <div className="threed-container">
+    // <div className="threed-container">
+    <div className={containerClassname}>
       {/* @ts-ignore */}
       <model-viewer
         class={`model-viewer ${className ? className : ""}`}

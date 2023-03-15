@@ -3,9 +3,9 @@ import Image from "./Image";
 import Video from "./Video";
 import Audio from "./Audio";
 import Skeleton from "./Skeleton";
-import "./index.css";
 import { ResourceType } from "./interface";
 import useResourceType from "./utils/useResourceType";
+import "./index.css";
 
 export interface Props {
   type?: ResourceType;
@@ -25,7 +25,7 @@ export default function NFTViewer({
   width,
   height,
   className,
-  containerClassname = "nft-viewer-container",
+  containerClassname = "nftviewer-container",
   skeleton = <Skeleton />,
   onError = () => {},
   noContentText,
@@ -44,6 +44,7 @@ export default function NFTViewer({
       url,
       onError,
       className,
+      containerClassname,
       ...others,
     };
 
@@ -60,15 +61,5 @@ export default function NFTViewer({
     content = null;
   }
 
-  return (
-    <div
-      className={`${containerClassname} ${resourceType}`}
-      style={{
-        width: width || "auto",
-        height: height || "auto",
-      }}
-    >
-      {content}
-    </div>
-  );
+  return <>{content}</>;
 }

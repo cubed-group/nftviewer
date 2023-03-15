@@ -11,15 +11,25 @@ function App() {
   return (
     <div className="app">
       <h2>3D</h2>
-      <NFTViewer url={url_glb} width="100%" height="100%"></NFTViewer>
+      <div className="wrapper">
+        <NFTViewer url={url_glb} width="100%" height="100%"></NFTViewer>
+      </div>
       <h2>Image</h2>
-      <NFTViewer url={url_image}></NFTViewer>
+      <div className="wrapper">
+        <NFTViewer url={url_image}></NFTViewer>
+      </div>
       <h2>Video</h2>
-      <NFTViewer url={url_video}></NFTViewer>
+      <div className="wrapper">
+        <NFTViewer url={url_video}></NFTViewer>
+      </div>
       <h2>Audio</h2>
-      <NFTViewer url={url_audio}></NFTViewer>
+      <div className="wrapper">
+        <NFTViewer url={url_audio}></NFTViewer>
+      </div>
       <h2>Not Found</h2>
-      <NFTViewer url={url_not_found}></NFTViewer>
+      <div className="wrapper">
+        <NFTViewer url={url_not_found}></NFTViewer>
+      </div>
     </div>
   );
 }
