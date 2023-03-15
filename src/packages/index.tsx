@@ -31,29 +31,33 @@ export default function NFTViewer({
   noContentText,
   ...others
 }: Props) {
+  let content: React.ReactNode = noContentText;
   let resourceType = type;
 
-  if (!type) {
-    resourceType = useResourceType(url);
-  }
+  if (url) {
+    if (!type) {
+      resourceType = useResourceType(url);
+    }
 
-  const commonProps = {
-    // skeleton,
-    url,
-    onError,
-    className,
-    ...others,
-  };
-  let content: React.ReactNode = noContentText;
+    const commonProps = {
+      // skeleton,
+      url,
+      onError,
+      className,
+      ...others,
+    };
 
-  if (resourceType === "image") {
-    content = <Image {...commonProps}></Image>;
-  } else if (resourceType === "video") {
-    content = <Video {...commonProps}></Video>;
-  } else if (resourceType === "audio") {
-    content = <Audio {...commonProps}></Audio>;
-  } else if (resourceType === "3d") {
-    content = <ThreeD {...commonProps}></ThreeD>;
+    if (resourceType === "image") {
+      content = <Image {...commonProps}></Image>;
+    } else if (resourceType === "video") {
+      content = <Video {...commonProps}></Video>;
+    } else if (resourceType === "audio") {
+      content = <Audio {...commonProps}></Audio>;
+    } else if (resourceType === "3d") {
+      content = <ThreeD {...commonProps}></ThreeD>;
+    }
+  } else {
+    content = null;
   }
 
   return (
