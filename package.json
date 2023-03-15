@@ -1,6 +1,6 @@
 {
   "name": "@cubed/nftviewer",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "react NFT viewer component",
   "main": "./dist/nftviewer.umd.cjs",
   "module": "./dist/nftviewer.js",
