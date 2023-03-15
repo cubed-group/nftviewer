@@ -19,7 +19,7 @@ export interface Props {
   noContentText?: "No resource";
 }
 
-export default function NFTViewer({
+const Viewer = ({
   url = "",
   type,
   width,
@@ -30,36 +30,40 @@ export default function NFTViewer({
   onError = () => {},
   noContentText,
   ...others
-}: Props) {
+}: Props) => {
   let content: React.ReactNode = noContentText;
   let resourceType = type;
 
-  if (url) {
-    if (!type) {
-      resourceType = useResourceType(url);
-    }
+  if (!type) {
+    resourceType = useResourceType(url);
+  }
 
-    const commonProps = {
-      // skeleton,
-      url,
-      onError,
-      className,
-      containerClassname,
-      ...others,
-    };
+  const commonProps = {
+    // skeleton,
+    url,
+    onError,
+    className,
+    containerClassname,
+    ...others,
+  };
 
-    if (resourceType === "image") {
-      content = <Image {...commonProps}></Image>;
-    } else if (resourceType === "video") {
-      content = <Video {...commonProps}></Video>;
-    } else if (resourceType === "audio") {
-      content = <Audio {...commonProps}></Audio>;
-    } else if (resourceType === "3d") {
-      content = <ThreeD {...commonProps}></ThreeD>;
-    }
-  } else {
-    content = null;
+  if (resourceType === "image") {
+    content = <Image {...commonProps}></Image>;
+  } else if (resourceType === "video") {
+    content = <Video {...commonProps}></Video>;
+  } else if (resourceType === "audio") {
+    content = <Audio {...commonProps}></Audio>;
+  } else if (resourceType === "3d") {
+    content = <ThreeD {...commonProps}></ThreeD>;
   }
 
   return <>{content}</>;
+};
+
+export default function NFTViewer({ url = "", ...others }: Props) {
+  if (url) {
+    return <Viewer url={url} {...others}></Viewer>;
+  } else {
+    return null;
+  }
 }
